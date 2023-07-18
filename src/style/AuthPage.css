@@ -8,7 +8,21 @@
     transform: translate(-50%, -50%);
 }
 
-#sign-up-button:hover {
-    opacity: 0.9;
-    transition: all 100ms linear;
+.overlay {
+    height: 100%;
+    position: absolute;
+    background-color: #FF7F50;
+    transition: all 500ms ease-in-out;
+}
+
+.overlay.active {
+    transform: translateX(100%);
+}
+
+.opacity {
+    opacity: 1;
+}
+
+.opacity.active {
+    opacity: 0;
 }
