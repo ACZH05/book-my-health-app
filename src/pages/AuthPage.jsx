@@ -1,9 +1,10 @@
 import { Col, Row, Form, Container, Button } from "react-bootstrap";
 import '../style/AuthPage.css'
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { AuthContext } from "../components/AuthProvider";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthPage() {
     const [email, setEmail] = useState("")
@@ -11,10 +12,15 @@ export default function AuthPage() {
     const [phoneNumber, setPhoneNumber] = useState("")
     const [active, setActive] = useState(false)
     const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const auth = getAuth()
     const { currentUser } = useContext(AuthContext)
     const url = 'https://booking-system-api-alfred-chinchin.sigma-school-full-stack.repl.co'
+
+    useEffect(() => {
+        if (currentUser) navigate("/")
+    }, [currentUser, navigate])
 
     const handleSignUp = async (e) => {
         e.preventDefault()
