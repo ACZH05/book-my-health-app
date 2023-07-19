@@ -7,13 +7,13 @@ import MainMenuPage from "./pages/MainMenuPage";
 function Layout() {
   return (
     <>
-      <Navbar bg='light' variant='light'>
+      <Navbar className="pt-3" style={{ background: "#FAF3E9"}}>
         <Container>
-          <Navbar.Brand>BookMyHealth</Navbar.Brand>
-            <Nav className='me-auto'>
-                <Nav.Link href='/'>Check My Booking schedule</Nav.Link>
+          <Navbar.Brand style={{ color: "#FF7F50", fontWeight: "bold" }}>BookMyHealth</Navbar.Brand>
+            <Nav>
+                <Nav.Link href='/' className="me-4" style={{ color: "#FF7F50", fontWeight: "500" }}>Check My Booking schedule</Nav.Link>
+                <Button className="px-4 rounded-pill" style={{ background: "transparent", border: "2px solid #FF7F50", color: "#FF7F50", fontWeight: "500" }}>Logout</Button>
             </Nav>
-            <Button variant='outline-dark'>Logout</Button>
         </Container>
       </Navbar>
       <Outlet />
