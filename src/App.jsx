@@ -13,7 +13,7 @@ function Layout() {
   return (
     <>
       <SectionAuth>
-        <Navbar className="pt-3" style={{ background: "#FAF3E9"}}>
+        <Navbar className="pt-4" style={{ background: "#FAF3E9"}}>
           <Container>
             <Navbar.Brand style={{ color: "#FF7F50", fontWeight: "bold" }}>BookMyHealth</Navbar.Brand>
               <Nav>

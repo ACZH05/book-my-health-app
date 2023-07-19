@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../components/AuthProvider"
 import { useNavigate } from "react-router-dom"
+import MainMenuBody from "../components/MainMenuBody"
 
 export default function MainMenuPage() {
     const { currentUser } = useContext(AuthContext)
@@ -11,8 +12,8 @@ export default function MainMenuPage() {
     }, [currentUser, navigate])
 
     return (
-        <div>
-            Hello
-        </div>
+        <>
+            <MainMenuBody />
+        </>
     )
     }
