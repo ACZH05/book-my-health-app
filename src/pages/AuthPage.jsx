@@ -63,7 +63,7 @@ export default function AuthPage() {
     }
   return (
     <div style={{ backgroundColor: "#FAF3E9", height: "100dvh", overflow: "hidden"}}>
-        <Row className="flex-center rounded">
+        <Row className="flex-center">
             <div className={active ? "overlay active" : "overlay"} style={{ width: "50%"}}>
                 {active ? (
                     <div className="d-flex flex-column position-absolute top-50 start-0 translate-middle-y mx-5" style={{color: "#FAF3E9"}}>
@@ -85,9 +85,9 @@ export default function AuthPage() {
                 <Container className="px-5 pt-4" style={{ width: "100%"}}>
                     <div style={{ fontSize: 32, fontWeight: "bold", color: "#FF7F50"}}>Sign Up</div>
                     <Form onSubmit={handleSignUp}>
-                        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-5" style={{ width: "100%"}} placeholder="Enter Email" />
-                        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-4" style={{ width: "100%"}} placeholder="Enter password" />
-                        <Form.Control type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="mt-4" style={{ width: "100%"}} placeholder="Enter phone number" />
+                        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="mt-5" style={{ width: "100%"}} placeholder="Enter Email" required />
+                        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-4" style={{ width: "100%"}} placeholder="Enter password" required />
+                        <Form.Control type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} className="mt-4" style={{ width: "100%"}} placeholder="Enter phone number" required />
                         <Button type="submit" className="mt-5 border-0 sign-up-button rounded-pill" style={{ width: "100%", backgroundColor: "#FF7F50"}}>Sign Up</Button>
                     </Form>
                     {error && (
@@ -99,8 +99,8 @@ export default function AuthPage() {
                 <Container className="px-5 pt-4" style={{ width: "100%"}}>
                         <div style={{ fontSize: 32, fontWeight: "bold", color: "#FF7F50"}}>Sign In</div>
                         <Form onSubmit={handleSignIn}>
-                            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}  className="mt-5" style={{ width: "100%"}} placeholder="Enter Email" />
-                            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-4" style={{ width: "100%"}} placeholder="Enter password" />
+                            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}  className="mt-5" style={{ width: "100%"}} placeholder="Enter Email" required />
+                            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="mt-4" style={{ width: "100%"}} placeholder="Enter password" required />
                             <Button type="submit" className="mt-5 border-0 sign-up-button rounded-pill" style={{ width: "100%", backgroundColor: "#FF7F50"}}>Sign In</Button>
                         </Form>
                         {error && (
