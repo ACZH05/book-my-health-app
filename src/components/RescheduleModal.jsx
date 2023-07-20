@@ -27,7 +27,7 @@ export default function RescheduleModal({ show, handleClose, booking }) {
   return (
     <>
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>Reschedule</Modal.Header>
+            <Modal.Header closeButton>Reschedule your appointment</Modal.Header>
             <Modal.Body>
                 <Form>
                     <Form.Select value={newTitle} onChange={(e) => setNewTitle(e.target.value)} aria-label="Default select example" required>

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = 'https://booking-system-api-alfred-chinchin.sigma-school-full-stack.repl.co'
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 export const fetchBooking = createAsyncThunk(
     "booking/fetchBooking",

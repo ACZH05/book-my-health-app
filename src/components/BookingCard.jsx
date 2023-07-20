@@ -15,9 +15,8 @@ export default function BookingCard({ booking }) {
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
     
-    const handleDelete = (e) => {
-        console.log(e.target.value)
-        const obj = {user_id: currentUser.uid, id: e.target.value}
+    const handleDelete = () => {
+        const obj = {user_id: currentUser.uid, id}
         console.log(obj)
         dispatch(deleteBooking(obj))
     }
@@ -43,8 +42,8 @@ export default function BookingCard({ booking }) {
                     <Card.Text>{description}</Card.Text>
                     <Card.Text>{formatDate(date)}</Card.Text>
                     <Card.Text>{formatTime(time)}</Card.Text>
-                    <Button className="me-3 border-0" style={{ backgroundColor: "#FF7F50"}} value={id} onClick={handleShow}><i className="bi bi-pencil-square"></i></Button>
-                    <Button variant="danger" value={id} onClick={handleDelete}><i className="bi bi-trash3"></i></Button>
+                    <Button className="me-3 border-0" style={{ backgroundColor: "#FF7F50"}} onClick={handleShow}><i className="bi bi-pencil-square"></i></Button>
+                    <Button variant="danger" onClick={handleDelete}><i className="bi bi-trash3"></i></Button>
                 </Card.Body>
             </Card>
             <RescheduleModal show={show} handleClose={handleClose} booking={booking} />

@@ -16,7 +16,7 @@ export default function AuthPage() {
 
     const auth = getAuth()
     const { currentUser } = useContext(AuthContext)
-    const url = 'https://booking-system-api-alfred-chinchin.sigma-school-full-stack.repl.co'
+    const url = import.meta.env.VITE_BASE_URL
 
     useEffect(() => {
         if (currentUser) navigate("/")
