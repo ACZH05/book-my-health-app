@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteBooking } from "../features/bookings/bookingSlice";
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
-import RescheduleModal from ".RescheduleModal";
+import UpdateBooking from "./UpdateBooking";
 
 export default function BookingCard({ booking }) {
     const dispatch = useDispatch()
@@ -46,7 +46,7 @@ export default function BookingCard({ booking }) {
                     <Button variant="danger" onClick={handleDelete}><i className="bi bi-trash3"></i></Button>
                 </Card.Body>
             </Card>
-            <RescheduleModal show={show} handleClose={handleClose} booking={booking} />
+            <UpdateBooking show={show} handleClose={handleClose} booking={booking} />
         </>
     )
 }

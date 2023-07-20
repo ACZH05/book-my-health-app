@@ -3,7 +3,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { updateBooking } from "../features/bookings/bookingSlice";
 
-export default function RescheduleModal({ show, handleClose, booking }) {
+export default function UpdateBooking({ show, handleClose, booking }) {
     const dispatch = useDispatch()
     const { id, title, description, date, time } = booking
 
