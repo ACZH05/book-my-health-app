@@ -23,7 +23,7 @@ export default function BookingCard({ title, description, date, time, email, pho
             <Card.Text>{formatTime(time)}</Card.Text>
             <Card.Text>{email}</Card.Text>
             <Card.Text>{phoneNumber}</Card.Text>
-            <Button className="me-3"><i className="bi bi-pencil-square"></i></Button>
+            <Button className="me-3 border-0" style={{ backgroundColor: "#FF7F50"}}><i className="bi bi-pencil-square"></i></Button>
             <Button variant="danger"><i className="bi bi-trash3"></i></Button>
         </Card.Body>
     </Card>
