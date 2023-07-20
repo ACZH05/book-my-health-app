@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteBooking } from "../features/bookings/bookingSlice";
 import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
-import RescheduleModal from "./rescheduleModal";
+import RescheduleModal from ".RescheduleModal";
 
 export default function BookingCard({ booking }) {
     const dispatch = useDispatch()
