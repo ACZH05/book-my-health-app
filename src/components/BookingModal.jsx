@@ -28,7 +28,7 @@ export default function BookingModal({ show, handleClose }) {
     return (
     <>
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>You sick? Skill issue tbh... gitgud by booking now</Modal.Header>
+            <Modal.Header closeButton>Book your Appointment</Modal.Header>
             <Modal.Body>
                 <Form>
                     <Form.Select value={title} onChange={(e) => setTitle(e.target.value)} aria-label="Default select example" required>
