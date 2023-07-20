@@ -1,12 +1,19 @@
 import { Button, Card } from "react-bootstrap"
 import { useDispatch } from "react-redux";
 import { deleteBooking } from "../features/bookings/bookingSlice";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
+import RescheduleModal from "./rescheduleModal";
 
-export default function BookingCard({ title, description, date, time, email, phoneNumber, bookingId }) {
+export default function BookingCard({ booking }) {
     const dispatch = useDispatch()
     const { currentUser } = useContext(AuthContext)
+    const { id, title, description, date, time } = booking
+
+    const [show, setShow] = useState(false)
+
+    const handleShow = () => setShow(true)
+    const handleClose = () => setShow(false)
     
     const handleDelete = (e) => {
         console.log(e.target.value)
@@ -29,17 +36,18 @@ export default function BookingCard({ title, description, date, time, email, pho
     }
       
     return (
-    <Card className="mt-4" style={{ width: "18rem", backgroundColor: "#FEFEFE", border: "1.5px solid #FF7F50"}}>
-        <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>{description}</Card.Text>
-            <Card.Text>{formatDate(date)}</Card.Text>
-            <Card.Text>{formatTime(time)}</Card.Text>
-            <Card.Text>{email}</Card.Text>
-            <Card.Text>{phoneNumber}</Card.Text>
-            <Button className="me-3 border-0" style={{ backgroundColor: "#FF7F50"}} value={bookingId}><i className="bi bi-pencil-square"></i></Button>
-            <Button variant="danger" value={bookingId} onClick={handleDelete}><i className="bi bi-trash3"></i></Button>
-        </Card.Body>
-    </Card>
+        <>
+    `       <Card className="mt-4" style={{ width: "18rem", backgroundColor: "#FEFEFE", border: "1.5px solid #FF7F50"}}>
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text>{description}</Card.Text>
+                    <Card.Text>{formatDate(date)}</Card.Text>
+                    <Card.Text>{formatTime(time)}</Card.Text>
+                    <Button className="me-3 border-0" style={{ backgroundColor: "#FF7F50"}} value={id} onClick={handleShow}><i className="bi bi-pencil-square"></i></Button>
+                    <Button variant="danger" value={id} onClick={handleDelete}><i className="bi bi-trash3"></i></Button>
+                </Card.Body>
+            </Card>
+            <RescheduleModal show={show} handleClose={handleClose} booking={booking} />
+        </>
     )
 }

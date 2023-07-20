@@ -34,6 +34,20 @@ export const deleteBooking = createAsyncThunk(
     }
 )
 
+export const updateBooking = createAsyncThunk(
+    "booking/updateBooking",
+    async (obj) => {
+        const data = {
+            title: obj.newTitle,
+            description: obj.newDescription,
+            date: obj.newDate,
+            time: obj.newTime
+        }
+        const res = await axios.put(`${BASE_URL}/booking/${obj.id}`, data)
+        return res.json()
+    }
+)
+
 const postSlice = createSlice({
     name: "booking",
     initialState: { booking: []},
@@ -46,6 +60,9 @@ const postSlice = createSlice({
             state.booking = [action.payload, ...state.name]
         }),
         builder.addCase(deleteBooking.fulfilled, (state, action) => {
+            state.booking = action.payload
+        }),
+        builder.addCase(updateBooking.fulfilled, (state, action) => {
             state.booking = action.payload
         })
     }

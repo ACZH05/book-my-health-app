@@ -30,7 +30,7 @@ export default function BookingPage() {
       <h1 className="mt-5 fw-bold" style={{ color: "#FF7F50"}}>Booking Schedules</h1>
       <Row>
         {bookings.map((booking) => (
-          <Col sm={3} key={booking.id}><BookingCard title={booking.title} description={booking.description} date={booking.date} time={booking.time} bookingId={booking.id} /></Col>
+          <Col sm={3} key={booking.id}><BookingCard title={booking.title} description={booking.description} date={booking.date} time={booking.time} bookingId={booking.id} booking={booking} /></Col>
         ))}
 
       </Row>
