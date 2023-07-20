@@ -5,6 +5,9 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import MainMenuPage from "./pages/MainMenuPage";
 import { getAuth } from "firebase/auth";
 import SectionAuth from "./components/SectionAuth";
+import BookingPage from "./pages/BookingPage";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function Layout() {
   const auth = getAuth(
@@ -15,9 +18,9 @@ function Layout() {
       <SectionAuth>
         <Navbar className="pt-4" style={{ background: "#FAF3E9"}}>
           <Container>
-            <Navbar.Brand style={{ color: "#FF7F50", fontWeight: "bold" }}>BookMyHealth</Navbar.Brand>
+            <Navbar.Brand href="/" style={{ color: "#FF7F50", fontWeight: "bold" }}>BookMyHealth</Navbar.Brand>
               <Nav>
-                  <Nav.Link href='/' className="me-4" style={{ color: "#FF7F50", fontWeight: "500" }}>Check My Booking schedule</Nav.Link>
+                  <Nav.Link href='/booking' className="me-4" style={{ color: "#FF7F50", fontWeight: "500" }}>Check My Booking schedule</Nav.Link>
                   <Button className="px-4 rounded-pill" style={{ background: "transparent", border: "2px solid #FF7F50", color: "#FF7F50", fontWeight: "500" }} onClick={() => auth.signOut()}>Logout</Button>
               </Nav>
           </Container>
@@ -30,17 +33,20 @@ function Layout() {
 
 export default function App() {
   return (
-    <div style={{ backgroundColor: "#FAF3E9",height: "100vh", overflow: "hidden"}}>
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<MainMenuPage />} />
-              <Route path="/login" element={<AuthPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-    </div>
+    <Provider store={store}>
+      <div style={{ backgroundColor: "#FAF3E9",height: "100vh", overflow: "hidden"}}>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<MainMenuPage />} />
+                <Route path="/login" element={<AuthPage />} />
+                <Route path="/booking" element={<BookingPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </div>
+    </Provider>
   )
 }
