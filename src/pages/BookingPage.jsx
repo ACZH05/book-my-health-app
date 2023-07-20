@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthContext } from "../components/AuthProvider";
 import BookingCard from "../components/BookingCard";
@@ -28,9 +28,12 @@ export default function BookingPage() {
     <Container>
       <BookingModal show={show} handleClose={handleClose} />
       <h1 className="mt-5 fw-bold" style={{ color: "#FF7F50"}}>Booking Schedules</h1>
-      {bookings.map((booking, index) => (
-        <BookingCard key={booking.id || index} title={booking.title} description={booking.description} date={booking.date} time={booking.time}  />
-      ))}
+      <Row>
+        {bookings.map((booking) => (
+          <Col sm={3} key={booking.id}><BookingCard  title={booking.title} description={booking.description} date={booking.date} time={booking.time}  /></Col>
+        ))}
+
+      </Row>
       <Button className="position-absolute sticky-bottom end-0 m-5 px-4 border-0" style={{ backgroundColor: "#FF7F50"}} onClick={handleShow}><i className="bi bi-calendar me-2" />Book Here!</Button>
       <BookingModal show={show} handleClose={handleClose} />
     </Container>

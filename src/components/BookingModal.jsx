@@ -1,6 +1,9 @@
 // import { useState } from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { saveBooking } from "../features/bookings/bookingSlice";
+import { AuthContext } from "./AuthProvider";
 
 export default function BookingModal({ show, handleClose }) {
     const [title, setTitle] = useState("")
@@ -8,11 +11,19 @@ export default function BookingModal({ show, handleClose }) {
     const [date, setDate] = useState("")
     const [time, setTime] = useState("")
 
+    const dispatch = useDispatch()
+    const { currentUser } = useContext(AuthContext)
+
     const handleClick = () => {
-        console.log(title)
         console.log(description)
-        console.log(date)
-        console.log(time)
+        const userId = currentUser.uid
+        const obj = {title, description, date, time, userId}
+        dispatch(saveBooking(obj))
+        handleClose()
+        setTitle("")
+        setDescription("")
+        setDate("")
+        setTime("")
     }
     return (
     <>
