@@ -1,4 +1,4 @@
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes, useNavigate } from "react-router-dom";
 import AuthPage from "./pages/AuthPage";
 import { AuthProvider } from "./components/AuthProvider";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
@@ -10,9 +10,12 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 function Layout() {
-  const auth = getAuth(
+  const auth = getAuth()
+  const navigate = useNavigate()
 
-  )
+  const handleClick = () => {
+    navigate('/booking')
+  }
   return (
     <>
       <SectionAuth>
@@ -20,7 +23,7 @@ function Layout() {
           <Container>
             <Navbar.Brand href="/" style={{ color: "#FF7F50", fontWeight: "bold" }}>BookMyHealth</Navbar.Brand>
               <Nav>
-                  <Nav.Link href='/booking' className="me-4" style={{ color: "#FF7F50", fontWeight: "500" }}>Check My Booking schedule</Nav.Link>
+                  <Nav.Link className="me-4" onClick={handleClick} style={{ color: "#FF7F50", fontWeight: "500" }}>Check My Booking schedule</Nav.Link>
                   <Button className="px-4 rounded-pill" style={{ background: "transparent", border: "2px solid #FF7F50", color: "#FF7F50", fontWeight: "500" }} onClick={() => auth.signOut()}>Logout</Button>
               </Nav>
           </Container>
